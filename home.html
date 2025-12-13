@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Agency Sierra Leone</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.4;
+            color: #333;
+            font sy: swap;
+        }
+
+        /* Navigation */
+        nav {
+            background: burlywood;
+            padding: 1rem 0;    
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background: #2d6a3f;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a472a 0%, #2d6a3f 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;l
+        },,   
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1re
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #1a472a;
+            font-weight: bold;
+        }
+
+        .btn-primary:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #1a472a;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Section Styles */
+        section {
+            display: none;
+        }
+
+        section.active {
+            display: block;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #1a472a;
+            text-align: center;
+        }
+
+        /* News Section */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .news-image {
+            height: 200px;
+            background: linear-gradient(135deg, #e0e0e0 0%, #c0c0c0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #666;
+        }
+
+        .news-content {
+            padding: 1.5rem;
+        }
+
+        .news-content h3 {
+            color: #1a472a;
+            margin-bottom: 0.5rem;
+        }
+
+        .news-date {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* What We Offer */
+        .offer-section {
+            background: #f8f9fa;
+            padding: 3rem 0;
+            margin: 3rem 0;
+        }
+
+        .offer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .offer-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .offer-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Players Grid */
+        .players-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .player-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .player-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .player-image {
+            height: 300px;
+            weight: 400px; 
+            background: linear-gradient(135deg, #1a472a 0%, #2d6a3f 100%);
+            display: flex;
+            align-items: bottom;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            
+        }
+
+        .player-info {
+            padding: 1.5rem;
+        }
+
+        .player-info h3 {
+            color: #1a472a;
+            margin-bottom: 0.5rem;
+        }
+
+        .player-position {
+            color: #666;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        /* Matches */
+        .matches-container {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .match-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .match-team {
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .match-score {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1a472a;
+        }
+
+        .match-date {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .about-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .about-card h3 {
+            color: #1a472a;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Form */
+        .contact-section {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #1a472a;
+        }
+
+        .submit-btn {
+            background: #1a472a;
+            color: white;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #2d6a3f;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a472a;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#" onclick="showSection('home')">Home</a></li>
+            <li><a href="#" onclick="showSection('players')">Players</a></li>
+            <li><a href="#" onclick="showSection('matches')">Matches</a></li>
+            <li><a href="#" onclick="showSection('about')">About Us</a></li>
+            <li><a href="#" onclick="showSection('contact')">Contact</a></li>
+        </ul>
+    </nav>
+    <!DOCTYPE html>
+<html>
+<head>
+    <!-- your existing head content -->
+</head>
+<body>
+    <header>
+        <nav>
+            </div>
+        </nav>
+            <header>
+            <img src="images/FAS.jpg" width="60" height="60">
+    <!-- your navigation -->
+</header>
+
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="active">
+        <div class="hero">
+            <h1>Sierra Leone Football Agency</h1>
+        </div>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-image"></div>
+                    <div class="news-content">
+                    <h2>NEWS ANNOUNCEMENTS</h2>
+                        <h3>Regional Tournament Success</h3>
+                        <p>Our players dominated the West African Regional Championship, with 5 players in the tournament's best XI.</p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Players Section -->
+    <section id="players">
+        <div class="container">
+            <h2>Players</h2>
+            <div class="players-grid">
+                
+                </div>
+                <div class="player-card">
+                    <div class="player-image"><img src="images/Alhassan.jpg" alt=""></div>
+                    <div class="player-info">
+                        <h3>Alhassan Koroma</h3>
+                        <p class="player-position">Forward</p>
+                        <p><strong>Age:</strong> 25</p>
+                        <p><strong>Height:</strong> 1.85m</p>
+                        <p><strong>Previous Club:</strong> Emirati Club Baniyas</p>
+                        <p>Strong central defender with leadership qualities and aerial dominance.</p>
+                    </div>
+                </div>
+                <div class="player-card">
+                    <div class="player-image"><img src="images/momoh_k.jpg" alt=""></div>
+                    <div class="player-info">
+                        <h3>Momoh Kamara</h3>
+                        <p class="player-position">midfielder</p>
+                        <p><strong>Age:</strong> 17</p>
+                        <p><strong>Height:</strong> 1.88m</p>
+                        <p><strong>Previous Club:</strong> East End Lions</p>
+                        <p>Reliable shot-stopper, a midfielder with excellent reflexes and command of the area.</p>
+                    </div>
+                </div>
+                <div class="player-card">
+                    <div class="player-image"><img src="images/Sheriff_suma.jpg" alt=""></div>
+                    <div class="player-info">
+                        <h3>Sheriff Suma</h3>
+                        <p class="player-position">left Winger</p>
+                        <p><strong>Age:</strong> 31</p>
+                        <p><strong>Height:</strong> 1.75m</p>
+                        <p><strong>Previous Club:</strong> leone star</p>
+                        <p>left winger with excellent dribbling skills and crossing ability.</p>
+                    </div>
+                </div>
+                <div class="player-card">
+                    <div class="player-image"><img src="images/Umaru_bangura.jpg" alt=""></div>
+                    <div class="player-info">
+                        <h3>Umaru Bangura</h3>
+                        <p class="player-position">Midfielder</p>
+                        <p><strong>Age:</strong> 30</p>
+                        <p><strong>Height:</strong> 1.80m</p>
+                        <p><strong>Leone Star</p>
+                        <p>central defender with tireless work rate and technical ability.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Matches Section -->
+    <section id="matches">
+        <div class="container">
+            <h2>Fixtures & Results</h2>
+            <div class="matches-container">
+                <h3 style="color: #1a472a; margin-top: 2rem;">Recent Results</h3>
+                <div class="match-card">
+                    <div class="match-team">
+                        <h4>East End Lions  7</h4>
+                    </div>
+                    <div class="match-score">
+                    </div>
+                    <div class="match-team">
+                        <h4>FC Kallon 1</h4>
+                    </div>
+                    <div class="match-date">November 30, 2025</div>
+                </div>
+                <div class="match-card">
+                    <div class="match-team">
+                        <h4>Mighty Blackpool 5</h4>
+                    </div>
+                    <div class="match-score">
+
+                    </div>
+                    <div class="match-team">
+                        <h4>Diamond Stars 7</h4>
+                    </div>
+                    <div class="match-date">November 28, 2025</div>
+                </div>
+                <div class="match-card">
+                    <div class="match-team">
+                        <h4>Ports Authority 2</h4>
+                    </div>
+                    <div class="match-score">
+
+                    </div>
+                    <div class="match-team">
+                        <h4>Kamboi Eagles 2</h4>
+                    </div>
+                    <div class="match-date">December 20, 2025</div>
+                </div>
+
+                <h3 style="color: #1a472a; margin-top: 3rem;">Upcoming Fixtures</h3>
+                <div class="match-card">
+                    <div class="match-team">
+                        <h4>FC Kallo </h4>
+                    </div>
+                    <div class="match-score">vs</div>
+                    <div class="match-team">
+                        <h4>Diamond Stars</h4>
+                    </div>
+                    <div class="match-date">December 13, 2025 - 2:00 PM</div>
+                </div>
+                <div class="match-card">
+                    <div class="match-team">
+                        <h4>East End Lions</h4>
+                    </div>
+                    <div class="match-score">vs</div>
+                    <div class="match-team">
+                        <h4>Mighty Blackpool</h4>
+                    </div>
+                    <div class="match-date">December 9, 2025 - 2:00 PM</div>
+                </div>
+                <div class="match-card">
+                    <div class="match-team">
+                        <h4>Ports Authority</h4>
+                    </div>
+                    <div class="match-score">vs</div>
+                    <div class="match-team">
+                        <h4>East End Lions</h4>
+                    </div>
+                    <div class="match-date">December 18, 2025 - 4:30 PM</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About FASL_Official</h2>
+            <div class="about-content">
+                <div class="about-card">
+                    <h3>Our History</h3>
+                    <p>Founded in 2018, Football Agency Sierra Leone emerged from a passion to showcase the incredible football talent in our nation. We started with just five players and have grown to become the leading football agency in Sierra Leone, representing over 50 talented athletes.</p>
+                    <p>Our journey has been marked by numerous success stories, including players securing contracts with clubs in Europe, Asia, and across Africa.</p>
+                </div>
+                <div class="about-card">
+                    <h3>Our Vision</h3>
+                    <p>To be the premier bridge connecting Sierra Leonean football talent with global opportunities, elevating the profile of our nation's football on the international stage.</p>
+                    <p>We envision a future where Sierra Leone is recognized as a key source of world-class football talent, with our players competing at the highest levels worldwide.</p>
+                </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container contact-section">
+            <h2>Contact Us</h2>
+            
+            <div class="contact-info">
+                <h3 style="color: #1a472a; margin-bottom: 1.5rem;"></h3>
+                <p> <strong>Address:</strong> 21 Battery Street, Kingtom,Freetown, Sierra Leone</p>
+                <p> <strong>Phone:</strong> 076119100/078309452</p>
+                <p> <strong>Email:</strong> info@FASL_Official.com</p>
+                <p> <strong>Social Media:</strong></p>
+                <p style="margin-left: 2rem;">
+                    Facebook: @FASL_Official<br>
+                    Twitter: @FASL_Official<br>
+                    Instagram: @FASL_Official
+                </p>
+            </div>
+
+            
+               
+                </div>
+                
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 FASL_Official. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function submitForm() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            if (!name || !email || !message) {
+                alert('Please fill in all required fields (Name, Email, and Message)');
+                return;
+            }
+
+            alert('Thank you for your message! We will get back to you soon.');
+            
+            // Clear form
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('phone').value = '';
+            document.getElementById('subject').value = '';
+            document.getElementById('message').value = '';
+        }
+    </script>
+</body>
+</html>
